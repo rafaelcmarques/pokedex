@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/js/index.js" defer type="module"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>POKEDEX</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="page-wrapper">
+        <a id="logo" href="/">
+          <img
+            src="https://archives.bulbagarden.net/media/upload/4/4b/Pok%C3%A9dex_logo.png"
+            alt="Pokedex Logo"
+          />
+        </a>
+
+        <div class="search">
+          <label for="search-input" class="sr-only">Procurar Pokemon</label>
+          <input type="text" placeholder="Pokemon's name ou ID" />
+          <button>Buscar</button>
+        </div>
+
+        <div class="pokemon-view-wrapper">
+          <div class="pokemon-view sr-only"></div>
+          <div class="pokemon-status-view">
+            <div class="pokemon-card"></div>
+            <div class="chart-wrapper sr-only">
+              <h1>Status</h1>
+              <canvas id="myChart"> </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal close"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </body>
+</html>
