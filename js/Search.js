@@ -49,6 +49,14 @@ export class searchPokemon extends Search {
 
       this.update()
     } catch (error) {
+      try {
+        this.newChart.createChart()
+      } catch {
+        console.log(
+          "nao foi possivel criar chart pq pokemon não foi encontrado"
+        )
+      }
+
       console.log(error.message)
       alert("Pokemon não encontrado")
     }
@@ -56,6 +64,23 @@ export class searchPokemon extends Search {
 
   onAdd() {
     const btnSearch = this.root.querySelector(".search button")
+    var input = this.root.querySelector(".search input")
+
+    input.addEventListener("keypress", function (e) {
+      if (!checkChar(e)) {
+        e.preventDefault()
+      }
+    })
+
+    function checkChar(e) {
+      var char = String.fromCharCode(e.keyCode)
+
+      console.log(char)
+      var pattern = "[a-zA-Z0-9]"
+      if (char.match(pattern)) {
+        return true
+      }
+    }
     btnSearch.onclick = () => {
       const { value } = this.root.querySelector(".search input")
       const valueLowCase = value.toLowerCase() //garante que será passado sem letras Uppercase
@@ -65,7 +90,6 @@ export class searchPokemon extends Search {
       try {
         this.newChart.removeChart()
       } catch (error) {
-        console.log(error)
         console.log("não há grafico para ser removido")
       }
     }
