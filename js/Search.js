@@ -58,7 +58,7 @@ export class searchPokemon extends Search {
       }
 
       console.log(error.message)
-      alert("Pokemon não encontrado")
+      alert("Pokemon não encontrado, tente novamente!")
     }
   }
 
@@ -81,9 +81,19 @@ export class searchPokemon extends Search {
       }
     }
     btnSearch.onclick = () => {
-      const { value } = this.root.querySelector(".search input")
-      const valueLowCase = value.toLowerCase() //garante que será passado sem letras Uppercase
-      this.add(valueLowCase)
+      try {
+        const value = input.value
+        if (value == "") {
+          throw new Error("input nao preenchido")
+        }
+        const valueLowCase = value.toLowerCase()
+        this.add(valueLowCase)
+      } catch (e) {
+        console.log(e.message)
+        const value = 0
+        this.add(value)
+      }
+
       this.root.querySelector(".search input").value = ""
 
       try {
